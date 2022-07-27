@@ -5,7 +5,7 @@
 **/env
 **/__pycache__
 # no need to upload the DB and LOG folders also
-https://riptutorial.com/git/example/911/exceptions-in-a--gitignore-file
+# https://riptutorial.com/git/example/911/exceptions-in-a--gitignore-file
 !**/db/
 **/db/*
 !**/db/touch.txt
