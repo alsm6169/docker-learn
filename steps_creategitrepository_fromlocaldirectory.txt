@@ -1,0 +1,16 @@
+# steps to create repository from existing directory
+1. create ssh key using instructions at https://www.atlassian.com/git/tutorials/git-ssh
+2. Go to your github account and create 'new repository'
+3. Open terminal where code is locally and execute commands sequentially§
+git init
+git add .
+git commit -m "first commit"
+git remote add origin git@github.com:alsm6169/tmp.git
+git branch -M main
+git push -u origin main
+
+
+# to add new files later
+git add <filename>
+git commit -m "added <filename>"
+git push
