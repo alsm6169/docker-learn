@@ -1,0 +1,7 @@
+pandas
+pandas_datareader
+python-dotenv
+SQLAlchemy
+mysql-connector-python
+apache-airflow
+apache-airflow-providers-docker

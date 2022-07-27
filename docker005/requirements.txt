@@ -1,0 +1,5 @@
+pandas
+pandas_datareader
+python-dotenv
+SQLAlchemy
+mysql-connector-python

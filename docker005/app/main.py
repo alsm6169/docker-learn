@@ -1,0 +1,115 @@
+import argparse
+import datetime as dt
+import pandas_datareader as pdr
+import pandas as pd
+import os
+from dotenv import load_dotenv
+import sqlalchemy as db
+from sqlalchemy import MetaData
+
+EOD_PRICE_TBL = 'eod_price'
+def validate_date(date_text):
+    try:
+        dt.datetime.strptime(date_text, '%Y-%m-%d')
+        return True
+    except ValueError:
+        print(f'Incorrect data format: {date_text}, should be YYYY-MM-DD')
+        return False
+
+
+def create_tables(engine, metadata):
+    eod_price = db.Table(EOD_PRICE_TBL, metadata,
+                         db.Column('Date', db.Date(), nullable=False),
+                         db.Column('Ticker', db.String(10), nullable=False),
+                         db.Column('High', db.Float()),
+                         db.Column('Low', db.Float()),
+                         db.Column('Open', db.Float()),
+                         db.Column('Close', db.Float()),
+                         db.Column('Volume', db.BigInteger()),
+                         db.Column('Adj Close', db.Float()),
+                         db.PrimaryKeyConstraint('Date', 'Ticker', name='unique_key1')
+                         )
+
+    metadata.create_all(engine)  # Creates the table
+
+
+def get_db_con():
+    load_dotenv()
+    db_name = os.getenv('DB_NAME')
+    db_usr = os.getenv('DB_USR_NM')
+    db_usr_pass = os.getenv('DB_USR_PASS')
+    db_port = os.getenv('DB_PORT')
+    print(f'DB connection details DB_NAME: {db_name}, DB_USR_NM: {db_usr}, DB_PORT: {db_port}')
+    con_str = f'mysql+mysqlconnector://{db_usr}:{db_usr_pass}@localhost/{db_name}'
+    print(f'con_str: {con_str}')
+    engine = db.create_engine(con_str, echo=True, future=True)
+    connection = engine.connect()
+    metadata = db.MetaData()
+
+    create_tables(engine, metadata)
+
+    return connection, engine
+
+
+def fetch_price(ticker, start_date, end_date, data_src, data_out):
+    print(f'fetch_price ticker: {ticker}, start_date: {start_date}, end_date: {end_date}, '
+          f'data_src: {data_src}, data_out: {data_out}')
+
+    # https://pandas-datareader.readthedocs.io/en/latest/remote_data.html#yahoo-finance-data
+    mkt_data_df = pdr.DataReader(ticker, data_src, start_date, end_date)
+
+    mkt_data_df.insert(0, 'Ticker', ticker)
+    mkt_data_df.index = mkt_data_df.index.date
+    mkt_data_df.index.rename('Date', inplace=True)
+    pd.options.display.max_columns = None
+    print(mkt_data_df)
+
+    if data_out == 'db':
+        connection, engine = get_db_con()
+        mkt_data_df.to_sql(EOD_PRICE_TBL, engine, if_exists='append')
+    else:
+        mkt_data_df.to_csv('../output/' + data_out)
+
+
+if __name__ == '__main__':
+    print(f'os.getcwd: {os.getcwd()}')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('ticker', type=str, nargs='?', default='MSFT',
+                        help='echo back the input message')
+    parser.add_argument('-b', '--begin_date', type=str, default=None,
+                        help='Start date (YYYY-MM-DD) / '
+                             'number of days in the past to include [default: 1 i.e. last working day]')
+    parser.add_argument('-e', '--end_date', type=str, default=None,
+                        help='Latest date (YYYY-MM-DD) to include [default: today]')
+
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument('-d', '--db', action='store_true', default=True,
+                       help='store results in DB (configuration set in .env file)')
+    group.add_argument('-f', '--file',
+                       help='name of the csv file, e.g. out.csv')
+
+    args = parser.parse_args()
+
+    ticker = args.ticker
+    print(f'__main__ ticker: {ticker}, args.begin_date: {args.begin_date}, args.end_date: {args.end_date}, '
+          f', args.file: {args.file}')
+    if args.begin_date is None:
+        start_date = (dt.date.today() - dt.timedelta(days=1)).strftime("%Y-%m-%d")
+    else:
+        if args.begin_date.isnumeric():
+            num_days = int(args.begin_date)
+            start_date = (dt.date.today() - dt.timedelta(days=num_days)).strftime("%Y-%m-%d")
+        elif not validate_date(args.begin_date):
+            start_date = (dt.date.today() - dt.timedelta(days=1)).strftime("%Y-%m-%d")
+        else:
+            start_date = args.begin_date
+
+    if args.end_date is None or not validate_date(args.begin_date):
+        end_date = dt.date.today().strftime("%Y-%m-%d")
+    else:
+        end_date = args.end_date
+
+    data_src = 'yahoo'
+    data_out = 'db' if args.db else args.file
+
+    fetch_price(ticker, start_date, end_date, data_src, data_out)

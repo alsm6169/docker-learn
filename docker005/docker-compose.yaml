@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  mysql:
+      image: mysql/mysql-server:8.0
+      container_name: mysql-inst
+      restart: unless-stopped
+      tty: true
+      volumes:
+        - ${PWD}/db:/var/lib/mysql
+      ports:
+        - "3306:3306"
+      environment:
+        MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+        MYSQL_DATABASE: ${DB_NAME}
+        MYSQL_USER: ${DB_USR_NM}
+        # export user password environment variable from terminal
+        # for example $export user_pass=tst
+        # to check the setting $echo $user_pass
+        MYSQL_PASSWORD: ${DB_USR_PASS}
+      networks:
+        - app_network
+
+networks:
+  app_network:
+    driver: bridge
