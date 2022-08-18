@@ -1,7 +1,23 @@
 import argparse
 
 
-def echo_msg(msg, file_name = None):
+def echo_msg(msg: str, file_name: str = None) -> None:
+    """Simple echo of input message either on console or input file.
+
+    This is line two of the description.
+
+    This is line three of description
+
+    Parameters
+    ----------
+    msg: message to display on console / write to file
+    file_name: name of the file where to write the message
+
+    Returns
+    -------
+    None
+    """
+
     print(f'{msg}')
     if file_name is not None:
         text_file = open(file_name, "wt")

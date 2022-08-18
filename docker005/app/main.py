@@ -8,7 +8,22 @@ import sqlalchemy as db
 from sqlalchemy import MetaData
 
 EOD_PRICE_TBL = 'eod_price'
-def validate_date(date_text):
+
+
+def validate_date(date_text: str) -> bool:
+    """
+    Check if the date_text is string in format YYYY-MM-DD and it converts to valid date.
+    i.e. 31-01-2001 returns True, 30-02-2002 returns False, 30.01.2010 returns False
+
+    Parameters
+    ----------
+    date_text: String to check if it is a valid date and in format YYYY-MM-DD
+
+    Returns
+    -------
+    True: if string can be converted to a valid date else False
+
+    """
     try:
         dt.datetime.strptime(date_text, '%Y-%m-%d')
         return True

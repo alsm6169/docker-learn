@@ -8,8 +8,16 @@
 # https://www.docker.com/blog/containerized-python-development-part-2/
 # https://www.docker.com/blog/containerized-python-development-part-3/
 
+# define the base image to use
 FROM python:slim
-# RUN apt-get update
+# update the image
+RUN apt-get update
+# define your working directory
 WORKDIR /usr/src/myapp
-COPY . .
-CMD ["python", "eod_price.py", "passed from dockerfile"]
+# copy contents of local directory to the working directory
+# only renaming it to show that we are executing the file from inside container and not the local file
+# we could have alternatively done COPY . .
+COPY echo.py echo_docker.py
+COPY Readme.md .
+# default command to execute if no commands are passed
+CMD ["python", "echo_docker.py", "passed from dockerfile"]

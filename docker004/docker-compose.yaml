@@ -2,20 +2,20 @@ version: '3.9'
 services:
   mysql:
       image: mysql/mysql-server:8.0
-      container_name: mysql-inst
+      container_name: mysql-inst # name of the server as seen during ps command
       restart: unless-stopped
       tty: true
-      volumes:
+      volumes:  # mounting the volume
         - ${PWD}/db:/var/lib/mysql
-      ports:
+      ports: # mapping of local machine port to sql container port
         - "3306:3306"
       environment:
         MYSQL_ROOT_PASSWORD: rpass
         MYSQL_DATABASE: mktdb
         MYSQL_USER: dbusr
         # export user password environment variable from terminal
-        # for example $export user_pass=tst
-        # to check the setting $echo $user_pass
+        # for example $ export user_pass=upass
+        # to check the setting $ echo $user_pass
         MYSQL_PASSWORD: ${user_pass}
       networks:
         - app_network

@@ -6,7 +6,6 @@
 **/.aws
 **/.ssh
 **/.idea
-README.md
 docker-compose.yml
 **/.DS_Store
 **/venv

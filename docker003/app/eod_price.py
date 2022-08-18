@@ -6,7 +6,20 @@ import pandas as pd
 import os
 
 
-def validate_date(date_text):
+def validate_date(date_text: str) -> bool:
+    """
+    Check if the date_text is string in format YYYY-MM-DD and it converts to valid date.
+    i.e. 31-01-2001 returns True, 30-02-2002 returns False, 30.01.2010 returns False
+
+    Parameters
+    ----------
+    date_text: String to check if it is a valid date and in format YYYY-MM-DD
+
+    Returns
+    -------
+    True: if string can be converted to a valid date else False
+
+    """
     try:
         dt.datetime.strptime(date_text, '%Y-%m-%d')
         return True
@@ -15,7 +28,23 @@ def validate_date(date_text):
         return False
 
 
-def fetch_price(ticker, start_date, end_date, data_src, file_name):
+def fetch_price(ticker: str, start_date: str, end_date: str, data_src: str, file_name: str) -> object:
+    """
+    Fetches the end of day data price from quandl (does not work) or yahoo finance and
+    return pandas dataframe object with open, high, low close, volume etc.
+
+    Parameters
+    ----------
+    ticker: the ticker whoose price has to be fetches
+    start_date: begin date in YYYY-MM-DD format
+    end_date: end date in YYYY-MM-DD format
+    data_src: string = quandl (DOES NOT WORK) / yahoo
+    file_name: output file name
+
+    Returns
+    -------
+    pandas dataframe: with  open, high, low close, volume etc.
+    """
     print(f'fetch_price ticker: {ticker}, start_date: {start_date}, end_date: {end_date}, '
           f'data_src: {data_src}, file_name: {file_name}')
 
