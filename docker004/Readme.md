@@ -61,7 +61,7 @@ $ docker run -d \
 `$ docker-compose exec mysql bash`  
 
 **Long docker commands to start server no longer needs to be typed and 
-are stored in a yaml file with the ability to have comments**
+are stored in a yaml file with the ability to have comments along with many other features**
 
 ## basic sql commands
 [reference link](https://devhints.io/mysql)
@@ -78,15 +78,15 @@ are stored in a yaml file with the ability to have comments**
 
 ### creating table from sql prompt
 1. start the mysql server
-Use `docker-compose up` or above `docker run -d \....` to start the mysql server
+Use `docker-compose up -d` or from above `docker run -d \....` to start the mysql server
 2. log into the mysql server
 `$ docker exec -it mysql-inst bash`
-3. log into sql
-Option 1
-`# mysql -u root -p`
-Option 2
-**Note: below that -p and password usecret are stuck together without space in between**
-`# mysql -u data_usr -prpass`
+3. log into sql  
+Option 1  
+`# mysql -u root -p`  
+Option 2   
+**Note: below that -p and password usecret are stuck together without space in between**   
+`# mysql -u dbusr -prpass`
 4. select database --> create table --> insert into table --> view the contents of the table
 ```
 bash-4.4# mysql -u root -p
@@ -103,8 +103,6 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql> create table price(ticker char(30), eod_date date, close float);  
-ERROR 1046 (3D000): No database selected
 mysql> use mktdb
 Database changed
 mysql> create table price(ticker char(30), eod_date date, close float);  
@@ -123,4 +121,9 @@ mysql> select * from price;
 
 mysql> 
 ```
+Other alternatives to creating tables / schema (after starting the mysql server) are:
+1. using free UI tools like TablePlus 
+2. using python sqlalchemy code (example in subsequent chapters)
 
+## Summary
+We learned to run a database server (here MySQL), log into the server and create database

@@ -96,12 +96,12 @@ services:
       ports:
         - "3306:3306"
       environment:
+        # the database connection details are in .env file
+        # use sample.env as an example to create .env with your connection details
+        # never check in .env file
         MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         MYSQL_DATABASE: ${MYSQL_DATABASE}
         MYSQL_USER: ${MYSQL_USER}
-        # export user password environment variable from terminal
-        # for example $export user_pass=tst
-        # to check the setting $echo $user_pass
         MYSQL_PASSWORD: ${MYSQL_PASSWORD}
   postgres:
     image: postgres:13

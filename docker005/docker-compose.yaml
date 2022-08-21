@@ -2,7 +2,7 @@ version: '3.9'
 services:
   mysql:
       image: mysql/mysql-server:8.0
-      container_name: mysql-inst
+      container_name: mysql-inst # name of the server as seen during ps command
       restart: unless-stopped
       tty: true
       volumes:
@@ -10,16 +10,20 @@ services:
       ports:
         - "3306:3306"
       environment:
+        # the database connection details are in .env file
+        # use sample.env as an example to create .env with your connection details
+        # never check in .env file
         MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
         MYSQL_DATABASE: ${DB_NAME}
         MYSQL_USER: ${DB_USR_NM}
-        # export user password environment variable from terminal
-        # for example $export user_pass=tst
-        # to check the setting $echo $user_pass
         MYSQL_PASSWORD: ${DB_USR_PASS}
-      networks:
-        - app_network
-
-networks:
-  app_network:
-    driver: bridge
+#  docker005:
+#    build: .
+#    image: docker005
+#    depends_on:
+#      - mysql
+#    environment:
+#      DB_USR_NM: ${DB_USR_NM}
+#      DB_NAME: ${DB_NAME}
+#      DB_USR_PASS: ${DB_USR_PASS}
+#      DB_PORT: ${DB_PORT}

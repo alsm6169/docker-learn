@@ -1,4 +1,16 @@
+## What we learned in previous chapter
+- Launch MySQL server using docker-compose
+- Create a docker application that fetches the end of day price and store it in MySQL database
+- Setup airflow and launch (and shutdown) airflow docker instance
+
+## Current Chapter Scope
+The grand finale where we tie everything together.  
+We have a workflow setup in airflow that runs the python application every evening at 23:00.
+The application fetches the eod prices and stores the results in MySQL database.
+The docker compose file launches MySQL server, it launches Airflow which in turn launches docker instance of 
+application that fetches the eod price of the ticker and save the results in MySQL database.
 ```
+
 $ pwd  
 /Users/me/Documents/Python/GitHub/docker-learn/docker007
 $ ls -l
