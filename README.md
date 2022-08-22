@@ -1,4 +1,4 @@
-# Learn from scratch: Docker + Airflow application to fetch daily stock price
+# Learn from scratch: Building Docker + Airflow application to fetch daily stock price
 These are series of chapters to help you build your hands-on docker knowledge from scratch to a full-fledged application 
 that uses airflow + mysql database to fetch daily end of day stock price and store it in MySQL database.
 
@@ -19,7 +19,9 @@ Each subsequent chapter builds new skills from previous chapter.
 * Learn about Dockerfile
 * Build a simple python based docker application that echoes the command line input parameter. 
 * Learn to run docker image with different parameter options.  
-Note: unlike previous chapter here the application is shipped as a part of your docker image. 
+
+
+**Note:** unlike previous chapter here the application is shipped as a part of your docker image. 
 ## docker003
 * Build a first version of python application that fetches the end-of-day stock price for input number of days. 
 The output is of this python application is displayed on console or written to file based on command line parameters 
@@ -29,18 +31,24 @@ The output is of this python application is displayed on console or written to f
 * Learn to download MySQL server docker image, start and stop the MySQL containers.
 * Learn to connect to MySQL DB from command line and create tables manually.   
 * Learn about docker-compose.yaml that helps to define and run multi-container Docker applications.  
-Note: Here we take a break from python application and learn only about the MySQL database
+
+
+**Note:** Here we take a break from python application and learn only about the MySQL database
 ## docker005
 * Enhance the python application to write the fetched end-of-day prices and write to database (besides console and file)
 * Create docker-compose to (download+)run MYSQL server and build python image docker application
 * Run docker app that fetches end-of-day stock price and writes to DB
 * View the different running configurations and data output
 * Learn how to pass environment variables to from .env file to applications via docker-compose
-Note: docker005 combines and builds upon the learnings of chapters docker003 and docker004.   
+
+
+**Note:** docker005 combines and builds upon the learnings of chapters docker003 and docker004.   
 ## docker006
 * Learn to download, configure and run Airflow docker image
 * Run Airflow examples and understand the output
-Note: Here we take a break from python application and learn only about Airflow
+
+
+**Note:** Here we take a break from python application and learn only about Airflow
 ## docker007
 * Use multiple docker compose files that  
   - launches MySQL server, 
@@ -49,5 +57,7 @@ Note: Here we take a break from python application and learn only about Airflow
 * Learn to start, check status and stop containers specified in multiple docker-compose images 
 * Test the docker application to check output to console, file in a directory and in the database
 * Automatically run the docker python application at configured time and verify the output
-Note: docker007 combines and builds upon the learnings of chapters docker005 (which itself is built upon 003 and 004)
+
+
+**Note:** docker007 combines and builds upon the learnings of chapters docker005 (which itself is built upon 003 and 004)
 and docker006.   
