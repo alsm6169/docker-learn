@@ -1,32 +1,33 @@
 version: '3.9'
 services:
-#  docker-proxy:
-#    image: eod_price
-#    command: "TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock"
-#    ports:
-#      - "2376:2375"
-#    volumes:
-#      - /var/run/docker.sock:/var/run/docker.sock
+  docker-proxy:
+#  # https://onedevblog.com/how-to-fix-a-permission-denied-when-using-dockeroperator-in-airflow/
+    image: bobrik/socat
+    command: "TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock"
+    ports:
+      - "2376:2375"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
   mysql:
       image: mysql/mysql-server:8.0
-      container_name: mysql-inst
+#      container_name: mysql-inst
       restart: unless-stopped
       tty: true
       volumes:
         - ${PWD}/db:/var/lib/mysql
       ports:
         - "3306:3306"
-      environment:
-        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-        MYSQL_DATABASE: ${MYSQL_DATABASE}
-        MYSQL_USER: ${MYSQL_USER}
-        # export user password environment variable from terminal
-        # for example $export user_pass=tst
-        # to check the setting $echo $user_pass
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      networks:
-        - app_network
-
-networks:
-  app_network:
-    driver: bridge
+# manually setting .env does not seem to be required and it seems to take it directly
+#      env_file:
+#       - '.env'
+#      networks:
+#        - app_network
+#
+  docker007:
+    build: .
+    image: docker007
+    depends_on:
+      - mysql
+#networks:
+#  app_network:
+#    driver: bridge

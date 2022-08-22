@@ -79,30 +79,30 @@ x-airflow-common:
       condition: service_healthy
 
 services:
-  # https://onedevblog.com/how-to-fix-a-permission-denied-when-using-dockeroperator-in-airflow/
-  docker-proxy:
-    image: bobrik/socat
-    command: "TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock"
-    ports:
-      - "2376:2375"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-  mysql:
-      image: mysql/mysql-server:8.0
-      restart: unless-stopped
-      tty: true
-      volumes:
-        - ${PWD}/db:/var/lib/mysql
-      ports:
-        - "3306:3306"
-      environment:
-        # the database connection details are in .env file
-        # use sample.env as an example to create .env with your connection details
-        # never check in .env file
-        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-        MYSQL_DATABASE: ${MYSQL_DATABASE}
-        MYSQL_USER: ${MYSQL_USER}
-        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#  # https://onedevblog.com/how-to-fix-a-permission-denied-when-using-dockeroperator-in-airflow/
+#  docker-proxy:
+#    image: bobrik/socat
+#    command: "TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock"
+#    ports:
+#      - "2376:2375"
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#  mysql:
+#      image: mysql/mysql-server:8.0
+#      restart: unless-stopped
+#      tty: true
+#      volumes:
+#        - ${PWD}/db:/var/lib/mysql
+#      ports:
+#        - "3306:3306"
+#      environment:
+#        # the database connection details are in .env file
+#        # use sample.env as an example to create .env with your connection details
+#        # never check in .env file
+#        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+#        MYSQL_DATABASE: ${MYSQL_DATABASE}
+#        MYSQL_USER: ${MYSQL_USER}
+#        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
   postgres:
     image: postgres:13
     environment:
@@ -153,7 +153,6 @@ services:
       timeout: 10s
       retries: 5
     restart: always
-
     depends_on:
       <<: *airflow-common-depends-on
       airflow-init:

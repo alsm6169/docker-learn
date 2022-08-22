@@ -52,12 +52,28 @@ docker006-redis-1               "docker-entrypoint.s…"   redis               r
 ![Enable the DAG to run](screenshots/01_enable_dag_2_run.png)
 * Check run status
 ![Check the run status](screenshots/02_check_dag_run_status.png)
-* Chek run logs
+* Check run logs
 ![Log window](screenshots/03_check_dag_log.png)
 ![DAG1 logs](screenshots/04_check_dag1_log.png)
 6. Stop Airflow   
-`$ docker-compose down`    
-
+```
+$ docker-compose down
+WARNING: The AIRFLOW_UID variable is not set. Defaulting to a blank string.
+Stopping docker006_airflow-worker_1    ... done
+Stopping docker006_airflow-webserver_1 ... done
+Stopping docker006_airflow-triggerer_1 ... done
+Stopping docker006_airflow-scheduler_1 ... done
+Stopping docker006_postgres_1          ... done
+Stopping docker006_redis_1             ... done
+Removing docker006_airflow-worker_1    ... done
+Removing docker006_airflow-webserver_1 ... done
+Removing docker006_airflow-triggerer_1 ... done
+Removing docker006_airflow-scheduler_1 ... done
+Removing docker006_airflow-init_1      ... done
+Removing docker006_postgres_1          ... done
+Removing docker006_redis_1             ... done
+Removing network docker006_default
+```
 
 ### Accessing the postgress DB
 ```

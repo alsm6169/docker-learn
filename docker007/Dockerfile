@@ -13,4 +13,4 @@ RUN pip install -r requirements.txt
 COPY app app
 RUN mkdir output
 WORKDIR /app_base/app
-CMD ["python", "eod_price.py", "TSLA", "-b", "5"]
+CMD ["python", "eod_price.py", "TSLA", "-b", "5", "-f", "out.csv" ]
