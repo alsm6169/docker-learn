@@ -11,6 +11,10 @@ We will combine here the separate information
 - we also create the tables in the database if tables do not exist
 - eod_price.py has a starting introduction to SqlAlchemy the pythonic way to interact with databases
 
+### IMPORTANT NOTE
+***Use sample.env to create a .env file before running MySQL server. 
+For starters, simply copy (or rename) sample.env as .env***
+
 ### SQL Alchemy Reference
 [Ref1](https://towardsdatascience.com/sqlalchemy-python-tutorial-79a577141a91)  
 [Ref2](https://overiq.com/sqlalchemy-101/)

@@ -15,6 +15,10 @@ The docker compose file:
 Airflow launches docker instance of application that fetches the eod price of the 
 ticker and save the results in MySQL database.
 
+### IMPORTANT NOTE
+***Use sample.env to create a .env file before running MySQL server. 
+For starters, simply copy (or rename) sample.env as .env***
+
 ### Explanation of the directory structure
 ```
 $ pwd  

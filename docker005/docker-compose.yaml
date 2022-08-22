@@ -17,13 +17,13 @@ services:
         MYSQL_DATABASE: ${DB_NAME}
         MYSQL_USER: ${DB_USR_NM}
         MYSQL_PASSWORD: ${DB_USR_PASS}
-#  docker005:
-#    build: .
-#    image: docker005
-#    depends_on:
-#      - mysql
-#    environment:
-#      DB_USR_NM: ${DB_USR_NM}
-#      DB_NAME: ${DB_NAME}
-#      DB_USR_PASS: ${DB_USR_PASS}
-#      DB_PORT: ${DB_PORT}
+  docker005:
+    build: .
+    image: docker005
+    depends_on:
+      - mysql
+    environment:
+      DB_USR_NM: ${DB_USR_NM}
+      DB_NAME: ${DB_NAME}
+      DB_USR_PASS: ${DB_USR_PASS}
+      DB_PORT: ${DB_PORT}
