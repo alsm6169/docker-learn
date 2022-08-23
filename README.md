@@ -7,9 +7,14 @@ This series of lessons are a very good accompaniment to some YouTube tutorial av
 Each subsequent chapter builds new skills from previous chapter.
 
 **Pre-requisite**    
-* Python knowledge
+* Python knowledge 
 * Basis Docker knowledge (what is docker and why it's a great idea to build docker based application)
 * Basic Airflow knowledge (what is Airflow, what can be achieved with Airflow)
+
+***Note: The python applications created are small and simple, 
+no explanation of the code logic has been provided though they should be easy to read and understand.
+Same is true for the DAG code (i.e. the Airflow scheduler)
+Hence, Python is defined as a pre-requisite***
 
 ## docker001
 * Get familiar with basic Docker commands e.g. pulling a docker image, running a container, checking status
@@ -64,7 +69,7 @@ The output is of this python application is displayed on console or written to f
 and docker006.   
 
 # What can be done next? 
-This based can be used to enhance the application as follows:
+This application base can be further enhanced as follows:
 - Instead of providing a single ticker (e.g. GOOG for google), provide an input file containing list of tickers
 - Enhance the program to scrape (or via API) get earnings results and other parameters from company website or other source
 - Use business intelligence tools like PowerBI, Tableau to build analytics
