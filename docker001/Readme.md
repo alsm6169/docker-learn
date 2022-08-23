@@ -1,8 +1,8 @@
 # Current Chapter Scope
-- Learn a few Docker commands
+- Learn Docker commands
 - Create a Docker image manually (using a series of commands on console)
 - Use to Docker image (which has all dependencies) to run your script
-- 
+
 ## Few essential docker commands
 [docker commands link](https://www.edureka.co/blog/docker-commands/)
 1. pull a new image from docker repository (only pull not run)
@@ -112,7 +112,7 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ## Building Docker image by hand
 **Objective:** To create a docker image by hand  containing python.  
 ***NOTE:** Almost never it is done like this. Dockerfile is a better way to do things. 
-Dockerfile is described in next tutorial.*
+Dockerfile is described in next chapter.*
 
 **# manually update an image. example: install python in ubuntu and commit that image**  
 `$ docker run -it  ubuntu bash`   
@@ -185,9 +185,9 @@ $ cat echo.txt
 how are you doing?
 ```
 ## Summary
-What happened here is:  
-- we created a new docker image with python installed (we could have installed additional libaries like pandas etc.)
-- now we call this image to run our python program
-In subsequent chapters we will even put our custom scripts into image to make it shippable binary
+What we learned here:  
+- We created a new docker image with python installed (we could have installed additional libaries like pandas etc.)
+- Use this image to run our python program
+In subsequent chapters we will even put our custom scripts into image to make it shippable image
 
 

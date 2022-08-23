@@ -3,9 +3,9 @@
 on screen or write to a file.  
 
 ## Current Chapter Scope
-In this chapter we will only work with MySQL containter. We will download the MySQL server instance from 
-a. command line
-b. docker compose file
+In this chapter we will only work with MySQL container. We will download the MySQL container from 
+1. command line
+2. using docker compose file
 This will be the first introduction to using docker compose file
 
 ## Manually getting the MySQL container, starting it 
@@ -126,4 +126,7 @@ Other alternatives to creating tables / schema (after starting the mysql server)
 2. using python sqlalchemy code (example in subsequent chapters)
 
 ## Summary
-We learned to run a database server (here MySQL), log into the server and create database
+What we learned here is:  
+- download MySQL container image
+- Start, Stop MySQL container
+- Log into the MySQL and create sample database

@@ -1,6 +1,6 @@
 # What we learned in previous chapter
-- basic docker commands e.g. to run a container, to launch in containers bash shell, remove image etc.
-- we created a custom container from ubuntu, installed python and executed python code that is stored locally
+- Basic docker commands e.g. to run a container, to launch in containers bash shell, remove image etc.
+- How to create a custom container from ubuntu, then install python library and execute python code that is stored locally
 
 # Current Chapter Scope
 - create custom container using docker file with python code within the container i.e. will be shipped with the container
@@ -69,6 +69,6 @@ $ cat out.txt
 from the command line into file
 ```
 ## Summary
-What happened here is:  
-- we created a new docker image with python installed (we could have installed additional libaries like pandas etc.)
-- now we *run this image to run our python program to save the results locally*
+What we learned here is:  
+- How to create new docker image with python libary as well as our echo application
+- How to run this image and display results on console as well as save the results locally using docker volumes

@@ -1,6 +1,4 @@
 ## What we learned in previous chapter
-- Launch MySQL server using docker-compose
-- Create a docker application that fetches the end of day price and store it in MySQL database
 - Setup airflow and launch (and shutdown) airflow docker instance
 
 ## Current Chapter Scope
@@ -177,3 +175,10 @@ con_str: mysql+mysqlconnector://dbusr:upass@host.docker.internal/mktdb
 * Verify output in MySQL Database    
 **NOTE: This time using free app TablePlus to connect to database and checking contents**   
 ![Log window](screenshots/03_TablePlus_DB_output.png)
+
+## Summary
+What we learned here is:   
+- Create automated workflow using Airflow. 
+- We built an application that runs daily (with Airflow scheduler) to fetch the end-of-day stock price of the input ticker (e.g. MSFT)
+- We store the results in file as well as in database
+- Starting, Stopping, Checking status of multiple docker-compose applications

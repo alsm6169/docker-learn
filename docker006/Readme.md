@@ -1,6 +1,5 @@
 ## What we learned in previous chapter
-- Launch MySQL server using docker-compose
-- Create a docker application that fetches the end of day price and store it in MySQL database
+- Create first version of the docker application that fetches the end of day price and store it in MySQL database
 
 ## Current Chapter Scope
 - Learn about Airflow (scheduler)
@@ -99,3 +98,9 @@ $ psql  -d airflow -U airflow -W
 > describe table: \d table_name
 > quit postgres: \q  
 ```
+
+## Summary
+What we learned here is: 
+- Setting up Airflow
+- Starting, shutting down airflow
+- Run Airflow examples and view the results

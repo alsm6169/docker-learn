@@ -1,7 +1,4 @@
 ## What we learned in previous chapter
-- create custom container using docker file with python code within the container i.e. will be shipped with 
-the container
-- save output of code run from container on to a local folder
 - launch a MySql database server using docker-compose or from command line
 - create tables in the database
 
@@ -70,3 +67,8 @@ exit
 $ 
 ```
 **Alternatively use free tool like TablePlus to inspect DB and its contents**
+
+## Summary
+What we learned here is:  
+- we combined knowledge from previous chapters and created first version of the application that fetches end-of-day
+stock prices and stores it in database.

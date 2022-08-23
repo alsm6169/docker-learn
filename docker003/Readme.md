@@ -1,7 +1,7 @@
 ## What we learned in previous chapter
 - create custom container using docker file with python code within the container i.e. will be shipped with 
 the container
-- save output of code run from container on to a local folder
+- Use volumes to save the output of code run from container on to a local folder
 
 ### Docker command to build the image
 Refer to previous chapter for basic docker commands, additional commands  
@@ -138,6 +138,6 @@ Date,ticker,High,Low,Open,Close,Volume,Adj Close
 2022-08-18,GOOG,121.63999938964844,119.55999755859375,120.2300033569336,121.25,8097958,121.25
 ```
 ## Summary
-What happened here is:
-we have a containerized program that fetches end of day stock price and shows the results on console 
+What we learned here is:  
+- we have a containerized program that fetches end of day stock price and shows the results on console 
 or write it to a file
