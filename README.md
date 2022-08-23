@@ -11,10 +11,13 @@ Each subsequent chapter builds new skills from previous chapter.
 * Basis Docker knowledge (what is docker and why it's a great idea to build docker based application)
 * Basic Airflow knowledge (what is Airflow, what can be achieved with Airflow)
 
-***Note: The python applications created are small and simple, 
+*Note: The python applications created are small and simple, 
 no explanation of the code logic has been provided though they should be easy to read and understand.
 Same is true for the DAG code (i.e. the Airflow scheduler)
-Hence, Python is defined as a pre-requisite***
+Hence, Python is defined as a pre-requisite*
+
+**Here is an overview of all the chapters. 
+The actual commands to execute and more explanation is in the Readme of each chapter**
 
 ## docker001
 * Get familiar with basic Docker commands e.g. pulling a docker image, running a container, checking status
