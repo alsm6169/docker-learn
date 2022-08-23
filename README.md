@@ -2,7 +2,7 @@
 These series of chapters help you build your hands-on docker knowledge from scratch to a full-fledged application 
 that uses airflow + mysql database to fetch daily end of day stock price and store it in MySQL database.
 
-This series of lessons are a very good accompaniment to some YouTube tutorial available for Docker and Airflow.   
+These series of lessons are a very good accompaniment to some YouTube tutorial available for Docker and Airflow.   
 **One can simply execute the commands described in each chapter's Readme file to get training on docker commands.**   
 Each subsequent chapter builds new skills from previous chapter.
 
